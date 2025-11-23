@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // --- 1. Define Data Structure and Get DOM Elements ---
 interface ListItem {
     name: string;
@@ -654,5 +653,4 @@ priceInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         addItem();
     }
->>>>>>> 9c37994797575f3666dfd6f1637ccbee8d8d6182
 });
