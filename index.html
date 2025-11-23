@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -200,3 +201,208 @@
 
 	</body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping List</title>
+    
+	<style>
+		/* 1. Global Styles */
+	    body {
+	        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	        /* --- CHANGE THIS LINE TO MAKE EVERYTHING BIGGER --- */
+	        font-size: 22px; 
+	        /* ------------------------------------------------ */
+	        background-color: #f4f4f9; 
+	        padding: 10px;
+	        max-width: 1000px;
+	        margin: auto; 
+	    }
+
+	    /* 2. Input and Listbox Styling */
+	    /* Update the input selector to ensure the itemInput (which is outside the row) works */
+	    #itemInput, #listBox, button {
+	        /* Keep general styles here, but remove width: 100% for the inputs that are in the row */
+	        padding: 10px;
+	        margin-bottom: 10px;
+	        border-radius: 5px;
+	        border: 1px solid #ccc;
+	        box-sizing: border-box;
+	        font-size: 1.1em; 
+	        width: 100%
+	    }
+	    
+	    /* Target the inputs inside the new container */
+	    .input-row input {
+	        width: 33%; /* Default share of the space */
+	        padding: 10px;
+	        margin-bottom: 10px;
+	        border-radius: 5px;
+	        border: 1px solid #ccc;
+	        box-sizing: border-box;
+	        /* Ensure the font size is set correctly here as well */
+	        font-size: 1.1em; 
+	    }
+    
+	    /* *** NEW: Flexbox container to align the fields *** */
+	    .input-row {
+	        display: flex; /* Makes the children align horizontally */
+	        gap: 10px;     /* Adds 10px spacing between the input fields */
+	        margin-bottom: 10px;
+	    }
+	    
+	    /* You can make the listbox text even bigger using 'em' units */
+	    #listBox {
+	        height: 520px;
+	        border: 1px solid #007bff; 
+	        font-size: 1.1em; /* This makes the listbox text 10% larger than the body font */
+	    }
+
+	    /* 3. Button Styling (Side-by-Side Layout) */
+	    .controls {
+	        display: flex;
+	        gap: 10px; /* Space between buttons */
+	        margin-bottom: 20px;
+	    }
+
+		.controls button {
+		    width: 16%; /* *** IMPORTANT CHANGE: Set width to fit six buttons *** */
+		    font-weight: bold;
+		    color: white;
+		    cursor: pointer;
+		    transition: background-color 0.3s ease;
+		    /* This rule applies to all buttons */
+		    padding: 15x 10px; /* This is likely what you have now */
+		    /* --- ADD OR ADJUST THIS LINE --- */
+	        /* Set the font size to be noticeably larger, e.g., 24px or 1.2em */
+	        font-size: 1.2em;
+		}
+	    
+	    /* Style for the "Add" button */
+	    #addButton {
+	        background-color: #28a745; /* Green */
+	        border-color: #28a745;
+	    }
+	    #addButton:hover {
+	        background-color: #218838;
+	    }
+
+	    /* Style for the "Delete" button */
+	    #deleteButton {
+	        background-color: #dc3545; /* Red */
+	        border-color: #dc3545;
+	    }
+	    #deleteButton:hover {
+	        background-color: #c82333;
+	    }
+	    
+	    /* *** NEW: Style for the "Save" button (Blue) *** */
+	    #saveButton {
+	        background-color: #007bff; /* Blue */
+	        border-color: #007bff;
+	    }
+	    #saveButton:hover {
+	        background-color: #0056b3;
+	    }
+	    
+	    /* *** NEW: Style for the "Load" button (e.g., Orange) *** */
+		#loadButton {
+		    background-color: #ffc107; /* Orange/Yellow */
+		    border-color: #ffc107;
+		    color: #333; /* Dark text for visibility on light background */
+		}
+		#loadButton:hover {
+		    background-color: #e0a800;
+		}
+		
+		#editButton {
+		    background-color: #6f42c1; /* Purple */
+		    border-color: #6f42c1;
+		}
+		#editButton:hover {
+		    background-color: #5d35a3;
+		}
+
+		/* *** NEW: Style for the "Sort" button (e.g., Teal) *** */
+		#sortButton {
+		    background-color: #20c997; /* Teal */
+		    border-color: #20c997;
+		}
+		#sortButton:hover {
+		    background-color: #1aa17b;
+		}
+		
+		/* *** NEW: Styling for the Totals Container *** */
+		/* Styling for the Totals Container */
+		#totalsContainer p {
+	        flex: 1 1 33%; 
+	        margin: 0; 
+	        padding: 0 5px;
+	        
+	        /* *** FIX: Use Flexbox inside the paragraph to push content apart *** */
+	        display: flex;
+	        justify-content: space-between;
+	        
+	        /* Ensure the label text doesn't wrap */
+	        white-space: nowrap; 
+	        
+	        font-weight: 600; 
+	        min-width: 0; 
+	    }
+	    
+	    /* Style for the numeric value (span) */
+	    #totalsContainer span {
+	        font-weight: bold;
+	        color: #007bff; 
+	        
+	        /* Add some left margin for visual separation from the label */
+	        margin-left: 5px; 
+	    }
+	</style>
+    
+</head>
+	<body>
+
+		<input type="text" id="itemInput" placeholder="Enter item name">
+	    
+	    <div class="input-row">
+	        <input type="number" id="priceInput" placeholder="Enter price" min="0" step="0.01">
+
+	        <input type="number" id="taxInput" placeholder="Enter tax %" min="0" step="0.1" value="0">
+	        
+	        <input type="text" id="filterInput" placeholder="Type to filter">
+	    </div>
+	    
+	    <div class="controls">
+	        <button id="addButton">Add Item</button>
+	        <button id="deleteButton">Delete Selected</button>
+	        <button id="editButton">Edit Selected</button>
+	        <button id="sortButton">Sort by Name</button>
+	        <button id="saveButton">Save Items</button>
+	        <button id="loadButton">Load Items</button>
+	    </div>
+	    
+	    <input type="file" id="fileInput" accept=".txt" style="display: none;">
+	    
+	    <hr>
+
+	    <select id="listBox" size="20">
+	        </select>
+	    
+	    <hr>
+
+	    <div id="totalsContainer">
+	        <p>Total Items: <span id="totalItemsCount">0</span>
+	        Total Price (Pre-Tax): <span id="totalPriceSum">$0.00</span>
+	        Total Price + Tax: <span id="totalPriceWithTax">$0.00</span></p>
+	    </div>
+
+	    <script src="dist/app.js"></script>
+
+	</body>
+
+</html>
+>>>>>>> 9c37994797575f3666dfd6f1637ccbee8d8d6182

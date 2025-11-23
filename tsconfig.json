@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
@@ -42,3 +43,49 @@
     "skipLibCheck": true,
   }
 }
+=======
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+    // File Layout
+    "rootDir": "./",
+    "outDir": "./dist",
+
+    // Environment Settings
+    // See also https://aka.ms/tsconfig/module
+    "module": "None",
+    "target": "ES5",
+    "types": [],
+    // For nodejs:
+    "lib": ["es2017", "DOM"],
+    "types": [],
+    // and npm install -D @types/node
+
+    // Other Outputs
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    // Stricter Typechecking Options
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // Style Options
+    // "noImplicitReturns": true,
+    // "noImplicitOverride": true,
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
+    // "noFallthroughCasesInSwitch": true,
+    // "noPropertyAccessFromIndexSignature": true,
+
+    // Recommended Options
+    "strict": true,
+    "jsx": "react-jsx",
+    "verbatimModuleSyntax": false,
+    "isolatedModules": false,
+    "noUncheckedSideEffectImports": false,
+    "moduleDetection": "auto",
+    "skipLibCheck": true,
+  }
+}
+>>>>>>> 9c37994797575f3666dfd6f1637ccbee8d8d6182
